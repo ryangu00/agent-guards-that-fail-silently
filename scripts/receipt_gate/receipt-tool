@@ -1,0 +1,16 @@
+#!/usr/bin/env python3
+"""Toy local writer. The transcript rule does not authenticate this executable."""
+import argparse
+from pathlib import Path
+import re
+
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--slug", required=True)
+parser.add_argument("--notes", type=Path, required=True)
+parser.add_argument("--body", default="Synthetic note.")
+args = parser.parse_args()
+if not re.fullmatch(r"[A-Za-z0-9_-]+", args.slug) or not args.body.strip():
+    parser.error("nonempty body and simple slug required")
+args.notes.mkdir(parents=True, exist_ok=True)
+(args.notes / (args.slug + ".md")).write_text(args.body + "\n")
+print(f"receipt-tool: OK slug={args.slug}")

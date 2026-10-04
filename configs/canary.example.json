@@ -1,0 +1,22 @@
+{
+  "settings": "settings.example.json",
+  "hooks_dir": "../examples/hooks",
+  "required_events": {
+    "good.py": ["PostToolUse", "PostToolUseFailure"],
+    "plain.py": ["Stop"]
+  },
+  "must_have_selftest": ["good.py"],
+  "alerts": "../.work/canary-alerts.jsonl",
+  "commands": [
+    {
+      "name": "synthetic-command",
+      "argv": ["{python}", "-c", "print('PONG')"],
+      "expect_stdout": "PONG\n",
+      "expect_rc": 0,
+      "timeout": 120,
+      "clean_env": true
+    }
+  ],
+  "gate_cases": "gate_cases.json",
+  "gate_argv": ["{python}", "../examples/content_gate.py"]
+}

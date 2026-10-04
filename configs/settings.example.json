@@ -1,0 +1,7 @@
+{
+  "hooks": {
+    "PostToolUse": [{"matcher": "Bash", "hooks": [{"type": "command", "command": "python3 good.py"}]}],
+    "PostToolUseFailure": [{"matcher": "Bash", "hooks": [{"type": "command", "command": "python3 good.py"}]}],
+    "Stop": [{"hooks": [{"type": "command", "command": "python3 plain.py"}]}]
+  }
+}

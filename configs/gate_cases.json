@@ -1,0 +1,4 @@
+[
+  {"label": "synthetic-denial", "body": "DEMO-BLOCK", "want_block": true},
+  {"label": "synthetic-allow", "body": "Ordinary prose.", "want_block": false}
+]
